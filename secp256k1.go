@@ -173,7 +173,7 @@ func (pk *PublicKey) StringEOS() string {
 
 	pub := pk.Data[:]
 	pub = append(pub, digest[:4]...)
-	return "EOS" + base58.Encode(pub)
+	return "AM" + base58.Encode(pub)
 }
 
 func (pk *PublicKey) String() string {
@@ -188,7 +188,7 @@ func (pk *PublicKey) String() string {
 }
 
 func NewPublicKeyFromBase58(strPub string) (*PublicKey, error) {
-	if strings.HasPrefix(strPub, "EOS") {
+	if strings.HasPrefix(strPub, "AM") {
 		strPub = strPub[3:]
 		pub, err := base58.Decode(strPub)
 		if err != nil {

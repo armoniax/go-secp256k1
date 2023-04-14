@@ -58,11 +58,12 @@ func TestA(t *testing.T) {
 
 	pub := priv.GetPublicKey()
 	log.Println("++++++pub key:", pub.String())
+	log.Println("++++++prefix pub key:", pub.StringEOS())
 }
 
 func TestB(t *testing.T) {
 	Init()
-	strPubEos := "EOS6t63xDyTbP8ncvZ9gjhkcrJbD1eueCfaNDAH4LV95XkpZasW9m"
+	strPubEos := "AM6t63xDyTbP8ncvZ9gjhkcrJbD1eueCfaNDAH4LV95XkpZasW9m"
 	strPub := "PUB_K1_6t63xDyTbP8ncvZ9gjhkcrJbD1eueCfaNDAH4LV95XkpbfUBbq"
 	pub, err := NewPublicKeyFromBase58(strPub)
 	if err != nil {
