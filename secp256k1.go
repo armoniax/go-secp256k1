@@ -189,7 +189,7 @@ func (pk *PublicKey) String() string {
 
 func NewPublicKeyFromBase58(strPub string) (*PublicKey, error) {
 	if strings.HasPrefix(strPub, "AM") {
-		strPub = strPub[3:]
+		strPub = strPub[2:]
 		pub, err := base58.Decode(strPub)
 		if err != nil {
 			return nil, err
