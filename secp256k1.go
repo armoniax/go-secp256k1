@@ -166,14 +166,14 @@ func (pk *PublicKey) Bytes() []byte {
 	return pk.Data[:]
 }
 
-func (pk *PublicKey) StringEOS() string {
+func (pk *PublicKey) StringAM() string {
 	hash := ripemd160.New()
 	hash.Write(pk.Data[:])
 	digest := hash.Sum(nil)
 
 	pub := pk.Data[:]
 	pub = append(pub, digest[:4]...)
-	return "EOS" + base58.Encode(pub)
+	return "AM" + base58.Encode(pub)
 }
 
 func (pk *PublicKey) String() string {
@@ -188,8 +188,8 @@ func (pk *PublicKey) String() string {
 }
 
 func NewPublicKeyFromBase58(strPub string) (*PublicKey, error) {
-	if strings.HasPrefix(strPub, "EOS") {
-		strPub = strPub[3:]
+	if strings.HasPrefix(strPub, "AM") {
+		strPub = strPub[2:]
 		pub, err := base58.Decode(strPub)
 		if err != nil {
 			return nil, err
